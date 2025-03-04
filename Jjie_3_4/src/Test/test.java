@@ -2,8 +2,27 @@ package Test;
 
 import java.util.Arrays;
 
-public class test {
-    public static void main(String[] args) {
+public class test{
+    public static void main(String[] args){
+        int[] arr1=new int[]{1,2,34,3,4,5,7,23,12};
+        System.out.println(Arrays.toString(arr1));
+        int[] arr2=Arrays.copyOf(arr1,5);
+        System.out.println(Arrays.toString(arr2));
+        int[] arr3=new int[10];
+        System.arraycopy(arr1,3,arr3,0,arr1.length-3);
+        System.out.println(Arrays.toString(arr3));
+        System.out.println(Arrays.toString(Arrays.copyOfRange(arr1,arr1.length-3,15)));
+
+    }
+    public static void main10(String[] args) {
+        int[] arr=new int[]{1,2,3,4,5,6,7,8,9,12,15,17,23};
+        System.out.println(Arrays.binarySearch(arr,23));
+        System.out.println(Arrays.binarySearch(arr,30));
+        System.out.println(Arrays.binarySearch(arr,5));
+
+    }
+
+    public static void main0(String[] args) {
         int[] arr=new int[]{2,1,4,6};
         int[] arr1=new int[]{1,2,34,3,4,5,7,23,12};
         System.out.println(Arrays.toString(arr));
