@@ -26,6 +26,7 @@ public class test {
         System.out.println(Arrays.toString(arr2));
     }
 
+    //未使用三数取中
     public static void quickSort(int[] arr, int start, int end) {
         //子区间的长度小于等于一时可认为他是有序的
         if (start >= end) {
@@ -37,11 +38,13 @@ public class test {
         int right = end;
         int pit = left;
         while (left < right) {
+            //右边找到比key小的元素
             while(left<right && arr[right]>=key){
                 right--;
             }
             arr[pit]=arr[right];
             pit=right;
+            //左边找到比key大的元素
             while(left<right && arr[left]<=key){
                 left++;
             }
