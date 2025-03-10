@@ -61,7 +61,7 @@ public class Test {
     public static void main(String[] args) {
 //        System.out.println("Jjie");
 
-        int[] arr1=new int[]{6,6,6,6,6};
+        int[] arr1=new int[]{3, 1, 4, 2, 5};
         System.out.println("排序之前的数组：");
         System.out.println(Arrays.toString(arr1));
         mergeSort(arr1);
