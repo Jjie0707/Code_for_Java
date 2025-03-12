@@ -26,7 +26,7 @@ public class Test {
     }
 
 
-        public static void main(String[] args) {
+        public static void main2(String[] args) {
             Scanner scanner = new Scanner(System.in);
 
                 int x = scanner.nextInt();
@@ -52,6 +52,10 @@ public class Test {
             return y;
         }
 
+    }
+    static boolean Paddy;
+    public static void main(String args[]){
+        System.out.println(Paddy);
     }
 }
 
