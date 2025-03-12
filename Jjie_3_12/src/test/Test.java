@@ -38,7 +38,7 @@ public class Test {
 挑战题
 10. 设计学生管理系统，包含Student类（学号、成绩）和Classroom类（学生数组），实现添加学生、计算班级平均分、查找最高分学生的方法
      */
-    public static void main(String[] args) {
+    public static void main7(String[] args) {
         int[][] arr=new int[][]{{1,2,3},{4,5,6}};
         System.out.println(Arrays.deepToString(arr));
         int[][] arr0=transposeMatrix(arr);
@@ -49,8 +49,8 @@ public class Test {
          int row=arr.length;
          int col=arr[0].length;
          int[][] arr0=new int[col][row];
-         for(int i=0;i<arr[0].length;i++){
-             for (int j = 0; j < arr.length; j++) {
+         for(int i=0;i<arr.length;i++){
+             for (int j = 0; j < arr[0].length; j++) {
                  arr0[j][i]=arr[i][j];
              }
          }
