@@ -27,8 +27,10 @@ public class Role {
 
     public void attack(Role role){
         Random r=new Random();
-        int hurt=r.nextInt();
-        role.blood-=hurt;
-        System.out.println(this.name+"攻击了"+role.name+",造成了"+hurt+"点伤害,"+role.name+"还剩下"+);
+        int hurt=r.nextInt(25)+1;
+        int remain=role.getBlood();
+        remain-=hurt;
+        role.setBlood(remain<=0?0:remain);
+        System.out.println(this.getName()+"攻击了"+role.getName()+",造成了"+hurt+"点伤害,"+role.getName()+"还剩下"+role.getBlood()+"点血量");
     }
 }
