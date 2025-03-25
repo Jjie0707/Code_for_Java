@@ -1,6 +1,34 @@
 package test;
 
+import java.util.Scanner;
+
+import static java.lang.Character.isLowerCase;
+import static java.lang.Character.isUpperCase;
+
+
 public class Test {
+    public static void main3(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("请输入一个字符串:");
+        String str=sc.nextLine();
+        int count1=0;
+        int count2=0;
+        int count3=0;
+        int length=str.length();
+        for(int i=0;i<length;i++){
+            char ch=str.charAt(i);
+            if(isUpperCase(ch)){
+                count1++;
+            }else if(isLowerCase(ch)){
+                count2++;
+            }else if('0'<=ch && ch<='9'){
+                count3++;
+            }
+        }
+        System.out.println("大写字母出现的次数:"+count1
+                            +"\n小写字母出现的次数:"+count2
+                            +"\n数字字符出现的次数:"+count3);
+    }
     public static void main2(String[] args) {
         StringBuffer s=new StringBuffer("heorld");
         s.insert(2,"llo w");
