@@ -40,11 +40,11 @@ public class AdminUser extends User {
         Scanner sc = ScannerSingleton.sc;
         Book book = new Book();
         System.out.println("请输入要添加的书籍的书名:");
-        book.setBookName(sc.nextLine());
+        book.setBookName(sc.next());
         System.out.println("请输入要添加的书籍的作者:");
-        book.setWriterName(sc.nextLine());
-        System.out.println("请输入要添加的书籍的出版日期,形如“yyyy-mm-dd”:");
-        book.setPublishTime(LocalDateTime.parse(sc.nextLine()));
+        book.setWriterName(sc.next());
+        System.out.println("请输入要添加的书籍的出版日期,形如“2024-04-02T10:30:45”:");
+        book.setPublishTime(LocalDateTime.parse(sc.next()));
         book.setShelfTime(LocalDateTime.now());
         book.setId(Library.library.getAllBookNum()+1+"");
         Library.library.addbook(book);
@@ -62,7 +62,7 @@ public class AdminUser extends User {
         Library.library.showBook();
         System.out.println("请输入要修改的书籍的id:");
         Scanner sc=ScannerSingleton.sc;
-        String id=sc.nextLine();
+        String id=sc.next();
         int index=Library.library.find(id);
         if(!(index==-1)) {
             System.out.println("请输入修改后的书名");

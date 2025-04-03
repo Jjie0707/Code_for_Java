@@ -1,11 +1,10 @@
 package library;
 
-import LibrarySystem.LibrarySystem;
+import librarysystem.LibrarySystem;
 import book.Book;
 import com.bit.utils.FileUtils;
 import constant.Constant;
 import user.NomalUser;
-import user.ProxyUser;
 import utils.ScannerSingleton;
 
 import java.time.LocalDateTime;
@@ -113,7 +112,7 @@ public class Library {
 //        Library.library.showBook();
         //  这里写死了 只能用id来查询 后续可以补充方法使用书名来查询
         System.out.println("请输入要查寻的图书的ID：");
-        String id= ScannerSingleton.sc.nextLine();
+        String id= ScannerSingleton.sc.next();
         int index=find(id);
         if(!(index==-1)){
             System.out.println(allbook[index]);
@@ -140,7 +139,7 @@ public class Library {
         Library.library.showBook();
         Scanner sc=ScannerSingleton.sc;
         System.out.println("请输入要删除的书籍的ID:");
-        String id=sc.nextLine();
+        String id=sc.next();
         int index=find(id);
         if(!(index==-1)){
 
@@ -194,7 +193,7 @@ public class Library {
         System.out.println();
         System.out.println("请输入要借阅的书籍的ID：");
         Scanner sc=ScannerSingleton.sc;
-        String id=sc.nextLine();
+        String id=sc.next();
         int index= library.find(id);
         if(!(index==-1)){
             allbook[index].setBorrowCount(allbook[index].getBorrowCount()+1);
@@ -258,7 +257,7 @@ public class Library {
     public void returnBook() {
         Scanner sc=ScannerSingleton.sc;
         System.out.println("请输入要归还的书的id");
-        String id=sc.nextLine();
+        String id=sc.next();
         for(int i=0;i<library.borrowedBookNum;i++){
             if(library.allborrowedbook[i].getBookId().equals(id)){
                 library.allborrowedbook[i]=null;
