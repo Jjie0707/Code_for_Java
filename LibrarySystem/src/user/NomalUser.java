@@ -1,6 +1,7 @@
 package user;
 
 import constant.Constant;
+import library.Library;
 
 public class NomalUser extends User{
     private String name;
@@ -36,5 +37,25 @@ public class NomalUser extends User{
     public void setMaxborrowedcount(int maxborrowedcount) {
         this.maxborrowedcount = maxborrowedcount;
     }
+    public void findBook(){
+        Library.library.findBook();
+    }
+    public void showBook() {
+        Library.library.showBook();;
+    }
+    public void quitSystem(){
+        Library.library.quitSystem();
+    }
 
+    public void borrowBoook() {
+        Library.library.borrowBook();
+    }
+
+    public void returnBook() {
+        Library.library.returnBook();
+    }
+
+    public void getOwnStatus() {
+        Library.library.getOwnStatus();
+    }
 }

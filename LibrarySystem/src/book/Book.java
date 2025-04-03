@@ -1,8 +1,9 @@
 package book;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
-public class Book {
+public class Book implements Comparable<Book>{
     private String id;
     private int borrowCount;
     private boolean available;
@@ -76,4 +77,23 @@ public class Book {
         return id+","+bookName+","+writerName+","+available+","+borrowCount+","+publishTime+","+shelfTime;
     }
 
+    @Override
+    public int compareTo(Book o) {
+        return o.getBorrowCount()-this.getBorrowCount();
+    }
+    public boolean isOverOneYear() {
+        // 获取当前时间
+        LocalDateTime now = LocalDateTime.now();
+
+        // 检查上架时间是否为空
+        if (shelfTime == null) {
+            return false; // 如果上架时间为空，返回 false
+        }
+
+        // 计算两个时间之间的月份数差
+        long monthsBetween = ChronoUnit.MONTHS.between(shelfTime, now);
+
+        // 如果月份数差大于等于 12，说明已经上架超过一年
+        return monthsBetween >= 12;
+    }
 }
