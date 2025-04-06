@@ -138,7 +138,7 @@ public class Library {
     public void deleteBook() {
         Library.library.showBook();
         Scanner sc=ScannerSingleton.sc;
-        System.out.println("请输入要删除的书籍的ID:");
+        System.out.println("请输入要删除的书籍的ID:\n(若没有要删除的书籍可以直接输入0)");
         String id=sc.next();
         int index=find(id);
         if(!(index==-1)){
@@ -176,13 +176,14 @@ public class Library {
     }
 
     public void removeOldBook() {
-        for(int i=0;i<allBookNum;i++){
-            if(!(allbook[i]==null)){
-                if(allbook[i].isOverOneYear()){
+        int j=0;
+        for(int i=0;i<allBookNum;i++,j++){
+            if(!(allbook[j]==null)){
+                if(allbook[j].isOverOneYear()){
                     System.out.println("这是超过一年的书籍的id：");
-                    System.out.println(allbook[i].getId());
+                    System.out.println(allbook[j].getId());
                     library.deleteBook();
-                    i--;
+                    j--;
                 }
             }
         }
@@ -212,10 +213,11 @@ public class Library {
             BorrowedBook[] arr=new BorrowedBook[Constant.Default_sizing];
             borrowedBookNum=0;
             System.out.println("数据加载完成");
+            Library.library.allborrowedbook=arr;
             return arr;
         }
         String[] tem=data.split("\n");
-        int length=Math.min(Constant.Default_sizing2,tem.length);
+        int length=Math.max(Constant.Default_sizing2,tem.length);
         BorrowedBook[] arr=new BorrowedBook[length];
         borrowedBookNum=tem.length;
         for(int i=0;i<borrowedBookNum;i++){
@@ -226,6 +228,7 @@ public class Library {
             arr[i]=b;
         }
         System.out.println("数据加载完成");
+        Library.library.allborrowedbook=arr;
         return arr;
     }
     public void storeBorrowedBook(){
@@ -239,19 +242,19 @@ public class Library {
         FileUtils.writeFile(sb.toString(),Constant.FILE_NAME1);
     }
     public void addBorrowedBook(BorrowedBook tem){
-        if(library.borrowedBookNum>=library.allborrowedbook.length){
-            BorrowedBook[] arr1=new BorrowedBook[library.allborrowedbook.length+1];
+        if(Library.library.borrowedBookNum>=Library.library.allborrowedbook.length){
+            BorrowedBook[] arr1=new BorrowedBook[Library.library.allborrowedbook.length+1];
             int i=0;
-            for(;i<library.borrowedBookNum;i++){
-                arr1[i]=library.allborrowedbook[i];
+            for(;i<Library.library.borrowedBookNum;i++){
+                arr1[i]=Library.library.allborrowedbook[i];
             }
             arr1[i]=tem;
             allborrowedbook=arr1;
         }else{
-            allborrowedbook[library.borrowedBookNum]=tem;
-            library.borrowedBookNum++;
+            allborrowedbook[Library.library.borrowedBookNum]=tem;
+            Library.library.borrowedBookNum++;
         }
-        library.storeBorrowedBook();
+        Library.library.storeBorrowedBook();
     }
 
     public void returnBook() {
@@ -270,8 +273,10 @@ public class Library {
     }
 
     public void getOwnStatus() {
+        System.out.println("【");
         for(int i=0;i<borrowedBookNum;i++){
             System.out.println(library.allborrowedbook[i]);
         }
+        System.out.println("】");
     }
 }

@@ -52,6 +52,7 @@ public class NomalUser extends User{
     }
 
     public void returnBook() {
+        this.getOwnStatus();
         Library.library.returnBook();
     }
 
